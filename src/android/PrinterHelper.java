@@ -67,7 +67,8 @@ public class PrinterHelper extends CordovaPlugin {
         try{
         if (action.equals("coolMethod")) {
             String message = args.getString(0);
-            this.coolMethod(message, callbackContext);
+            callbackContext.success("coolMethod ");
+            //this.coolMethod(message, callbackContext);
             //listBT(callbackContext);
             return true;
         }
