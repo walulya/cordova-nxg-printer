@@ -117,8 +117,6 @@ public class PrinterHelper extends CordovaPlugin {
         return false;
     }
 
-
-
     public void initNexGo(CallbackContext callbackContext) {
         if (printer != null) {
             showToast("Print Initialized");
@@ -128,7 +126,6 @@ public class PrinterHelper extends CordovaPlugin {
         }
 
     }
-
 
     private void coolMethod(String message, CallbackContext callbackContext) {
         if (message != null && message.length() > 0) {
@@ -150,6 +147,16 @@ public class PrinterHelper extends CordovaPlugin {
         printer.appendPrnStr("Test String", FONT_SIZE_SMALL, AlignEnum.LEFT, false);
         printer.appendPrnStr("---------------------------", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
         printer.appendPrnStr("merchant name:app test", FONT_SIZE_NORMAL, AlignEnum.RIGHT, false);
+        printer.appendPrnStr("---------------------------", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
+        printer.appendBarcode("20220301808908009", 50, 0, 2, BarcodeFormatEnum.CODE_128, AlignEnum.CENTER);
+                printer.appendQRcode("this qr code", 200, AlignEnum.CENTER);
+        printer.appendPrnStr("Ivan Walulya", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
+        printer.appendPrnStr("\n", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
+        printer.appendPrnStr("\n", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
+        printer.appendPrnStr("\n", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
+        printer.appendPrnStr("---------------------------", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
+        printer.appendPrnStr("Swedbank", FONT_SIZE_SMALL, AlignEnum.LEFT, false);
+        printer.appendPrnStr("I ACKNOWLEDGE SATISFACTORY RECEIPT OF RELATIVE GOODS/SERVICES", FONT_SIZE_SMALL, AlignEnum.LEFT, false);
         printer.startPrint(true, new OnPrintListener() {
             @Override
             public void onPrintResult(final int retCode) {
