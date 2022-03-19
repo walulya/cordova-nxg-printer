@@ -64,6 +64,7 @@ public class PrinterHelper extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+        try{
         if (action.equals("coolMethod")) {
             String message = args.getString(0);
             this.coolMethod(message, callbackContext);
@@ -93,6 +94,10 @@ public class PrinterHelper extends CordovaPlugin {
             showToast("result calculated in Java: " + result);
             callbackContext.success("result calculated in Java: " + result);
             return true;
+        }
+        } catch(Exception e){
+            errorMessage = e.getMessage();
+            callbackContext.error(errorMessage);
         }
         return false;
     }
