@@ -98,8 +98,6 @@ public class PrinterHelper extends CordovaPlugin {
     }
 
     public void initNexGo(CallbackContext callbackContext) {
-        //初始化为针打printer
-        //BaseApplication.instance.setCurrentCmdType(BaseEnum.CMD_ESC);
         deviceEngine = ((NexgoApplication) cordova.getActivity().getApplication()).deviceEngine;
         printer = deviceEngine.getPrinter();
         printer.setTypeface(Typeface.DEFAULT);

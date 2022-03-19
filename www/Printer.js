@@ -5,6 +5,7 @@ var PLUGIN_NAME = 'PrinterHelper';
 var NXPrinter = {
     add: function (args, cb) {
         //exec(cb, null, PLUGIN_NAME, 'echo', [phrase]);
+        //NXPrinter.add([1,2], success)
         exec(cb, null, PLUGIN_NAME, "performAdd", args);
     },
      printtest: function(fnSuccess, fnError){
@@ -16,6 +17,9 @@ var NXPrinter = {
     init: function(fnSuccess, fnError){
         exec(fnSuccess, fnError, PLUGIN_NAME, "init", []);
      },
+     coolMethod: function (arg0, success, error) {
+        exec(success, error, PLUGIN_NAME, 'coolMethod', [arg0]);
+    },
 }
 
 exports.coolMethod = function (arg0, success, error) {
