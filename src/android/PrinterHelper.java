@@ -163,7 +163,7 @@ public class PrinterHelper extends CordovaPlugin {
                  cordova.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(cordova.getActivity().getWindow().getContext(), retCode + "", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(cordova.getActivity().getWindow().getContext(), "Printing Succeeded", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -184,7 +184,7 @@ public class PrinterHelper extends CordovaPlugin {
                  cordova.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(cordova.getActivity().getWindow().getContext(), retCode + "", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(cordova.getActivity().getWindow().getContext(), "Printing Succeeded", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
