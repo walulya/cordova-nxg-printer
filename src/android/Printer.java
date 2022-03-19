@@ -138,4 +138,25 @@ public class Printer extends CordovaPlugin {
             }
         });
     }
+
+    private void printText(CallbackContext callbackContext) {
+        printer.initPrinter();
+        printer.setTypeface(Typeface.DEFAULT);
+        printer.setLetterSpacing(5);
+
+        printer.appendPrnStr("Test String", FONT_SIZE_SMALL, AlignEnum.LEFT, false);
+        printer.appendPrnStr("---------------------------", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
+        printer.appendPrnStr("merchant name:app test", FONT_SIZE_NORMAL, AlignEnum.RIGHT, false);
+        printer.startPrint(true, new OnPrintListener() {
+            @Override
+            public void onPrintResult(final int retCode) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(PrinterActivity.this, retCode + "", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+    }
 }
