@@ -20,14 +20,11 @@ import android.graphics.Typeface;
 import android.content.res.Resources;
 import android.text.TextUtils;
 
-
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.StringWriter;
 import java.io.PrintWriter;
-
 
 import com.nexgo.oaf.apiv3.APIProxy;
 import com.nexgo.oaf.apiv3.DeviceEngine;
@@ -77,9 +74,6 @@ public class PrinterHelper extends CordovaPlugin {
         deviceEngine = APIProxy.getDeviceEngine();
         printer = deviceEngine.getPrinter();
         printer.setTypeface(Typeface.DEFAULT);
-        if (printer != null) {
-            showToast("Print Initialized");
-        }
     }
 
 
@@ -126,13 +120,13 @@ public class PrinterHelper extends CordovaPlugin {
 
 
     public void initNexGo(CallbackContext callbackContext) {
-        
-        //deviceEngine = APIProxy.getDeviceEngine();
-        showToast("Print Initializing");
-        //printer = deviceEngine.getPrinter();
-        //printer.setTypeface(Typeface.DEFAULT);
-        showToast("Print Initialized");
-        callbackContext.success("Print Initialized");
+        if (printer != null) {
+            showToast("Print Initialized");
+            callbackContext.success("Print Initialized");
+        } else {
+            callbackContext.error("Failed to initialize printer.");
+        }
+
     }
 
 
