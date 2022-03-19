@@ -11,7 +11,7 @@
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="Printer">
-                <param name="android-package" value="pebuu.printer.Printer" />
+                <param name="android-package" value="swapp.printer.Printer" />
             </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml">
@@ -19,11 +19,13 @@
             <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
         </config-file>
 
-        <source-file src="src/android/Printer.java" target-dir="src/pebuu/printer/Printer" />
-        <source-file src="src/android/BaseEnum.java" target-dir="src/pebuu/printer/BaseEnum" />
-        <source-file src="src/android/TonyUtils.java" target-dir="src/pebuu/printer/TonyUtils" />
-        <source-file src="src/android/libs/printer_library.jar" target-dir="libs" />
-        <!--
+        <source-file src="src/android/Printer.java" target-dir="src/swapp/printer/Printer" />
+        <source-file src="src/android/BaseEnum.java" target-dir="src/swapp/printer/BaseEnum" />
+        <source-file src="src/android/TonyUtils.java" target-dir="src/swapp/printer/TonyUtils" />
+        <source-file src="src/android/libs/nexgo-smart-sdk-2.0.7.jar" target-dir="libs" />
+        <source-file src="src/android/libs/nexgo-smart-sdk-2.0.7-sources.jar" target-dir="libs" />
+        <!--<source-file src="src/android/libs/printer_library.jar" target-dir="libs" />
+        
         <source-file src="src/android/libs/android-support-annotations.jar" target-dir="libs" />
         -->
 

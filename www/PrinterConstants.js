@@ -37,5 +37,10 @@ module.exports = {
     FONT_B_9x24 : 2, 
     FONT_C_9x17 : 3, 
     FONT_D_8x16 : 4
+  },
+  FontSize: {
+    SMALL: 20,
+    NORMAL: 24,
+    BIG: 28
   }
 };
