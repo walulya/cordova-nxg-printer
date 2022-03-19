@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.content.res.Resources;
 import android.text.TextUtils;
 
@@ -79,7 +80,7 @@ public class PrinterHelper extends CordovaPlugin {
         }
         else if (action.equals("text")) {
             String text = args.getString(0);
-            printText(text, callbackContext);
+            printText(callbackContext);
             return true;
         }
 
@@ -129,12 +130,13 @@ public class PrinterHelper extends CordovaPlugin {
         printer.startPrint(true, new OnPrintListener() {
             @Override
             public void onPrintResult(final int retCode) {
-                runOnUiThread(new Runnable() {
+                Toast.makeText(PrinterActivity.this, retCode + "", Toast.LENGTH_SHORT).show();
+                /*runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         Toast.makeText(PrinterActivity.this, retCode + "", Toast.LENGTH_SHORT).show();
                     }
-                });
+                }); */
             }
         });
     }
@@ -150,12 +152,14 @@ public class PrinterHelper extends CordovaPlugin {
         printer.startPrint(true, new OnPrintListener() {
             @Override
             public void onPrintResult(final int retCode) {
-                runOnUiThread(new Runnable() {
+                Toast.makeText(PrinterActivity.this, retCode + "", Toast.LENGTH_SHORT).show();
+                /*runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         Toast.makeText(PrinterActivity.this, retCode + "", Toast.LENGTH_SHORT).show();
                     }
                 });
+                */
             }
         });
     }
