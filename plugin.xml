@@ -19,7 +19,7 @@
             <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
         </config-file>
 
-        <source-file src="src/android/Printer.java" target-dir="src/swapp/printer/Printer" />
+        <source-file src="src/android/PrinterHelper.java" target-dir="src/swapp/printer/PrinterHelper" />
         <source-file src="src/android/NexgoApplication.java" target-dir="src/swapp/printer/NexgoApplication" />
         <source-file src="src/android/libs/nexgo-smart-sdk-2.0.7.jar" target-dir="libs" />
         <source-file src="src/android/libs/nexgo-smart-sdk-2.0.7-sources.jar" target-dir="libs" />

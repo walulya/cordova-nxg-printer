@@ -1,6 +1,6 @@
 var exec = require('cordova/exec');
 
-var PLUGIN_NAME = 'Printer';
+var PLUGIN_NAME = 'PrinterHelper';
 
 var NXGOPrinter = {
     add: function (args, cb) {
@@ -19,7 +19,7 @@ var NXGOPrinter = {
 }
 
 exports.coolMethod = function (arg0, success, error) {
-    exec(success, error, 'Printer', 'coolMethod', [arg0]);
+    exec(success, error, PLUGIN_NAME, 'coolMethod', [arg0]);
 };
 
 

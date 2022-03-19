@@ -47,7 +47,7 @@ import java.util.UUID;
 /**
  * This class echoes a string called from JavaScript.
  */
-public class Printer extends CordovaPlugin {
+public class PrinterHelper extends CordovaPlugin {
     private static final String LOG_TAG = "NXGPrinter";
 
     private DeviceEngine deviceEngine;
