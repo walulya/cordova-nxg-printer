@@ -3,7 +3,7 @@
     <name>Printer</name>
     <js-module name="Printer" src="www/Printer.js">
         <!--<clobbers target="cordova.plugins.Printer" /> -->
-        <clobbers target="RTPrinter" />
+        <clobbers target="NXGOPrinter" />
     </js-module>
    <js-module src="www/PrinterConstants.js" name="Camera">
         <clobbers target="RTConstants" />
