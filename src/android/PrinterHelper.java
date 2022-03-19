@@ -77,6 +77,9 @@ public class PrinterHelper extends CordovaPlugin {
         deviceEngine = APIProxy.getDeviceEngine();
         printer = deviceEngine.getPrinter();
         printer.setTypeface(Typeface.DEFAULT);
+        if (printer != null) {
+            showToast("Print Initialized");
+        }
     }
 
 
