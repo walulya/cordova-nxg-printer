@@ -10,8 +10,8 @@
     </js-module>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
-            <feature name="Printer">
-                <param name="android-package" value="swapp.printer.Printer" />
+            <feature name="PrinterHelper">
+                <param name="android-package" value="swapp.printer.PrinterHelper" />
             </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml">
