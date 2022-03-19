@@ -90,6 +90,7 @@ public class PrinterHelper extends CordovaPlugin {
             /* Indicating success is failure is done by calling the appropriate method on the
             callbackContext.*/
             int result = arg1 + arg2;
+            showToast("result calculated in Java: " + result);
             callbackContext.success("result calculated in Java: " + result);
             return true;
         }
