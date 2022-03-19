@@ -23,6 +23,9 @@
         <source-file src="src/android/NexgoApplication.java" target-dir="src/swapp/printer/NexgoApplication" />
         <source-file src="src/android/libs/nexgo-smart-sdk-2.0.7.jar" target-dir="libs" />
         <source-file src="src/android/libs/nexgo-smart-sdk-2.0.7-sources.jar" target-dir="libs" />
+        <source-file src="src/android/libs/armeabi/libnexgo_emvjni.so" target-dir="libs/armeabi/" />
+        <source-file src="src/android/libs/armeabi/libnexgo_gencode.so" target-dir="libs/armeabi/" />
+        <source-file src="src/android/libs/armeabi/libnexgo_sdkemvjni.so" target-dir="libs/armeabi/" />
         <!--<source-file src="src/android/libs/printer_library.jar" target-dir="libs" />
         
         <source-file src="src/android/libs/android-support-annotations.jar" target-dir="libs" />
