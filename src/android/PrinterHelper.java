@@ -25,6 +25,7 @@ import java.io.StringWriter;
 import java.io.PrintWriter;
 
 
+import com.nexgo.oaf.apiv3.APIProxy;
 import com.nexgo.oaf.apiv3.DeviceEngine;
 import com.nexgo.oaf.apiv3.device.printer.AlignEnum;
 import com.nexgo.oaf.apiv3.device.printer.BarcodeFormatEnum;
@@ -32,6 +33,7 @@ import com.nexgo.oaf.apiv3.device.printer.DotMatrixFontEnum;
 import com.nexgo.oaf.apiv3.device.printer.FontEntity;
 import com.nexgo.oaf.apiv3.device.printer.OnPrintListener;
 import com.nexgo.oaf.apiv3.device.printer.Printer;
+import com.nexgo.oaf.smartpos.jni.SmartPOSJni;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -103,7 +105,7 @@ public class PrinterHelper extends CordovaPlugin {
     }
 
     public void initNexGo(CallbackContext callbackContext) {
-        deviceEngine = ((NexgoApplication) cordova.getActivity().getApplication()).deviceEngine;
+        deviceEngine = APIProxy.getDeviceEngine();
         printer = deviceEngine.getPrinter();
         printer.setTypeface(Typeface.DEFAULT);
         showToast("Print Initialized");
