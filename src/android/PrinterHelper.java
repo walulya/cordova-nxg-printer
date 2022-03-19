@@ -99,7 +99,7 @@ public class PrinterHelper extends CordovaPlugin {
     public void initNexGo(CallbackContext callbackContext) {
         //初始化为针打printer
         //BaseApplication.instance.setCurrentCmdType(BaseEnum.CMD_ESC);
-        deviceEngine = ((NexgoApplication) getApplication()).deviceEngine;
+        deviceEngine = ((NexgoApplication) cordova.getActivity().getApplication()).deviceEngine;
         printer = deviceEngine.getPrinter();
         printer.setTypeface(Typeface.DEFAULT);
         showToast("Print Initialized");
@@ -130,13 +130,12 @@ public class PrinterHelper extends CordovaPlugin {
         printer.startPrint(true, new OnPrintListener() {
             @Override
             public void onPrintResult(final int retCode) {
-                Toast.makeText(PrinterActivity.this, retCode + "", Toast.LENGTH_SHORT).show();
-                /*runOnUiThread(new Runnable() {
+                 cordova.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(PrinterActivity.this, retCode + "", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(cordova.getActivity().getWindow().getContext(), retCode + "", Toast.LENGTH_SHORT).show();
                     }
-                }); */
+                });
             }
         });
     }
@@ -152,14 +151,12 @@ public class PrinterHelper extends CordovaPlugin {
         printer.startPrint(true, new OnPrintListener() {
             @Override
             public void onPrintResult(final int retCode) {
-                Toast.makeText(PrinterActivity.this, retCode + "", Toast.LENGTH_SHORT).show();
-                /*runOnUiThread(new Runnable() {
+                 cordova.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(PrinterActivity.this, retCode + "", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(cordova.getActivity().getWindow().getContext(), retCode + "", Toast.LENGTH_SHORT).show();
                     }
                 });
-                */
             }
         });
     }
