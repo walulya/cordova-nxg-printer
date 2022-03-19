@@ -3,10 +3,10 @@ var exec = require('cordova/exec');
 var PLUGIN_NAME = 'PrinterHelper';
 
 var NXPrinter = {
-    add: function (args, cb) {
+    add: function (args, fnSuccess, fnError) {
         //exec(cb, null, PLUGIN_NAME, 'echo', [phrase]);
         //NXPrinter.add([1,2], success)
-        exec(cb, null, PLUGIN_NAME, "performAdd", args);
+        exec(fnSuccess, fnError, PLUGIN_NAME, "performAdd", args);
     },
      printtest: function(fnSuccess, fnError){
         exec(fnSuccess, fnError, PLUGIN_NAME, "printtest", []);
