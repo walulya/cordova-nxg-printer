@@ -67,37 +67,37 @@ public class PrinterHelper extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         try{
-        if (action.equals("coolMethod")) {
-            String message = args.getString(0);
-            callbackContext.success("coolMethod ");
-            //this.coolMethod(message, callbackContext);
-            //listBT(callbackContext);
-            return true;
-        }
-        if (action.equals("init")) {
-            initNexGo(callbackContext);
-            return true;
-        }
-        else if (action.equals("printtest")) {
-            printTest(callbackContext);
-            return true;
-        }
-        else if (action.equals("text")) {
-            String text = args.getString(0);
-            printText(callbackContext);
-            return true;
-        }
+            if (action.equals("coolMethod")) {
+                String message = args.getString(0);
+                callbackContext.success("coolMethod ");
+                //this.coolMethod(message, callbackContext);
+                //listBT(callbackContext);
+                return true;
+            }
+            if (action.equals("init")) {
+                initNexGo(callbackContext);
+                return true;
+            }
+            else if (action.equals("printtest")) {
+                printTest(callbackContext);
+                return true;
+            }
+            else if (action.equals("text")) {
+                String text = args.getString(0);
+                printText(callbackContext);
+                return true;
+            }
 
-        if (action.equals("performAdd")) {
-            int arg1 = args.getInt(0);
-            int arg2 = args.getInt(1);
-            /* Indicating success is failure is done by calling the appropriate method on the
-            callbackContext.*/
-            int result = arg1 + arg2;
-            showToast("result calculated in Java: " + result);
-            callbackContext.success("result calculated in Java: " + result);
-            return true;
-        }
+            if (action.equals("performAdd")) {
+                int arg1 = args.getInt(0);
+                int arg2 = args.getInt(1);
+                /* Indicating success is failure is done by calling the appropriate method on the
+                callbackContext.*/
+                int result = arg1 + arg2;
+                showToast("result calculated in Java: " + result);
+                callbackContext.success("result calculated in Java: " + result);
+                return true;
+            }
         } catch(Exception e){
             callbackContext.error(e.getMessage());
         }
@@ -105,6 +105,7 @@ public class PrinterHelper extends CordovaPlugin {
     }
 
     public void initNexGo(CallbackContext callbackContext) {
+        showToast("Print Initializing");
         deviceEngine = APIProxy.getDeviceEngine();
         printer = deviceEngine.getPrinter();
         printer.setTypeface(Typeface.DEFAULT);
