@@ -96,8 +96,7 @@ public class PrinterHelper extends CordovaPlugin {
             return true;
         }
         } catch(Exception e){
-            errorMessage = e.getMessage();
-            callbackContext.error(errorMessage);
+            callbackContext.error(e.getMessage());
         }
         return false;
     }
