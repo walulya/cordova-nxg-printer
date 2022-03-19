@@ -55,6 +55,8 @@ public class PrinterHelper extends CordovaPlugin {
 
     private DeviceEngine deviceEngine;
     private Printer printer;
+    private Context context;
+    private Activity activity;
     private final int FONT_SIZE_SMALL = 20;
     private final int FONT_SIZE_NORMAL = 24;
     private final int FONT_SIZE_BIG = 24;
@@ -62,6 +64,16 @@ public class PrinterHelper extends CordovaPlugin {
     private FontEntity fontNormal = new FontEntity(DotMatrixFontEnum.CH_SONG_24X24, DotMatrixFontEnum.ASC_SONG_12X24);
     private FontEntity fontBold = new FontEntity(DotMatrixFontEnum.CH_SONG_24X24, DotMatrixFontEnum.ASC_SONG_BOLD_16X24);
     private FontEntity fontBig = new FontEntity(DotMatrixFontEnum.CH_SONG_24X24, DotMatrixFontEnum.ASC_SONG_12X24, false, true);
+
+    @Override
+    protected void pluginInitialize() {
+        super.pluginInitialize();
+        context = this.cordova.getActivity().getBaseContext();
+        activity = this.cordova.getActivity();
+        deviceEngine = APIProxy.getDeviceEngine(context);
+        printer = deviceEngine.getPrinter();
+        printer.setTypeface(Typeface.DEFAULT);
+    }
 
 
     @Override
@@ -103,6 +115,8 @@ public class PrinterHelper extends CordovaPlugin {
         }
         return false;
     }
+
+
 
     public void initNexGo(CallbackContext callbackContext) {
         
