@@ -5,7 +5,7 @@
         <!--<clobbers target="cordova.plugins.Printer" /> -->
         <clobbers target="NXPrinter" />
     </js-module>
-   <js-module src="www/PrinterConstants.js" name="Camera">
+   <js-module src="www/PrinterConstants.js" name="NXConstants">
         <clobbers target="NXConstants" />
     </js-module>
     <platform name="android">
