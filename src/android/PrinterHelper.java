@@ -60,11 +60,13 @@ public class PrinterHelper extends CordovaPlugin {
     private Activity activity;
     private final int FONT_SIZE_SMALL = 20;
     private final int FONT_SIZE_NORMAL = 24;
-    private final int FONT_SIZE_BIG = 24;
+    private final int FONT_SIZE_BIG = 28;
     private FontEntity fontSmall = new FontEntity(DotMatrixFontEnum.CH_SONG_20X20, DotMatrixFontEnum.ASC_SONG_8X16);
     private FontEntity fontNormal = new FontEntity(DotMatrixFontEnum.CH_SONG_24X24, DotMatrixFontEnum.ASC_SONG_12X24);
     private FontEntity fontBold = new FontEntity(DotMatrixFontEnum.CH_SONG_24X24, DotMatrixFontEnum.ASC_SONG_BOLD_16X24);
     private FontEntity fontBig = new FontEntity(DotMatrixFontEnum.CH_SONG_24X24, DotMatrixFontEnum.ASC_SONG_12X24, false, true);
+
+    AlignEnum[] align = new AlignEnum[]{AlignEnum.LEFT, AlignEnum.CENTER, AlignEnum.RIGHT};
 
     @Override
     protected void pluginInitialize() {
@@ -149,7 +151,7 @@ public class PrinterHelper extends CordovaPlugin {
         printer.appendPrnStr("merchant name:app test", FONT_SIZE_NORMAL, AlignEnum.RIGHT, false);
         printer.appendPrnStr("---------------------------", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
         printer.appendBarcode("20220301808908009", 50, 0, 2, BarcodeFormatEnum.CODE_128, AlignEnum.CENTER);
-                printer.appendQRcode("this qr code", 200, AlignEnum.CENTER);
+        printer.appendQRcode("this qr code", 200, AlignEnum.CENTER);
         printer.appendPrnStr("Ivan Walulya", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
         printer.appendPrnStr("\n", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
         printer.appendPrnStr("\n", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
