@@ -201,6 +201,19 @@ public class PrinterHelper extends CordovaPlugin {
         printer.setTypeface(Typeface.DEFAULT);
         printer.setLetterSpacing(5);
 
+        Resources activityRes = cordova.getActivity().getResources();
+        int logoResId = activityRes.getIdentifier("swapp_logo", "drawable", cordova.getActivity().getPackageName())
+
+        Bitmap bitmap;
+
+        bitmap = BitmapFactory.decodeResource(activityRes, logoResId);
+        if (bitmap == null) {
+            showToast("No image has been configured");
+            return;
+        }
+
+        printer.appendImage(bitmap, AlignEnum.CENTER);
+
         for (int i = 0; i < args.length(); ++ i) {
             JSONObject arg = args.getJSONObject(i);
             String text      = arg.getString("text");
