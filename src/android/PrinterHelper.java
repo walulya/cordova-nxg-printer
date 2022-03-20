@@ -212,6 +212,8 @@ public class PrinterHelper extends CordovaPlugin {
             printer.appendPrnStr(text, fontSize, align[alignment], isBold);
         }
 
+        printer.appendBarcode("1234567890", 50, 0, 2, BarcodeFormatEnum.CODE_128, AlignEnum.CENTER);
+
         printer.startPrint(true, new OnPrintListener() {
             @Override
             public void onPrintResult(final int retCode) {
