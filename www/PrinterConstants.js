@@ -28,9 +28,8 @@ module.exports = {
   },
   Align:{
     ALIGN_LEFT : 0,
-    ALIGN_MIDDLE : 1,
+    ALIGN_CENTER : 1,
     ALIGN_RIGHT : 2,
-    ALIGN_BOTH_SIDES : 3
   },
   Font:{
     FONT_A_12x24 : 1, 

@@ -146,7 +146,7 @@ public class PrinterHelper extends CordovaPlugin {
         printer.setTypeface(Typeface.DEFAULT);
         printer.setLetterSpacing(5);
 
-        printer.appendPrnStr("Test String", FONT_SIZE_SMALL, AlignEnum.LEFT, false);
+        printer.appendPrnStr("Test String", FONT_SIZE_SMALL, align[2], false);
         printer.appendPrnStr("---------------------------", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
         printer.appendPrnStr("merchant name:app test", FONT_SIZE_NORMAL, AlignEnum.RIGHT, false);
         printer.appendPrnStr("---------------------------", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
