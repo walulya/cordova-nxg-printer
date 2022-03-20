@@ -6,7 +6,7 @@
         <clobbers target="NXPrinter" />
     </js-module>
    <js-module src="www/PrinterConstants.js" name="Camera">
-        <clobbers target="RTConstants" />
+        <clobbers target="NXConstants" />
     </js-module>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">

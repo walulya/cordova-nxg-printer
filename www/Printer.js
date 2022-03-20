@@ -8,6 +8,9 @@ var NXPrinter = {
         //NXPrinter.add([1,2], success)
         exec(fnSuccess, fnError, PLUGIN_NAME, "performAdd", args);
     },
+    receipt: function (args, fnSuccess, fnError) {
+        exec(fnSuccess, fnError, PLUGIN_NAME, "receipt", args);
+    },
      printtest: function(fnSuccess, fnError){
         exec(fnSuccess, fnError, PLUGIN_NAME, "printtest", []);
      },

@@ -102,6 +102,10 @@ public class PrinterHelper extends CordovaPlugin {
                 printText(callbackContext);
                 return true;
             }
+            else if (action.equals("receipt")) {
+                printReceipt(args, callbackContext);
+                return true;
+            }
 
             if (action.equals("performAdd")) {
                 int arg1 = args.getInt(0);
@@ -180,6 +184,33 @@ public class PrinterHelper extends CordovaPlugin {
         printer.appendPrnStr("Test String", FONT_SIZE_SMALL, AlignEnum.LEFT, false);
         printer.appendPrnStr("---------------------------", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
         printer.appendPrnStr("merchant name:app test", FONT_SIZE_NORMAL, AlignEnum.RIGHT, false);
+        printer.startPrint(true, new OnPrintListener() {
+            @Override
+            public void onPrintResult(final int retCode) {
+                 cordova.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(cordova.getActivity().getWindow().getContext(), "Printing Succeeded", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+    }
+    private void printReceipt(JSONArray args, CallbackContext callbackContext) {
+        printer.initPrinter();
+        printer.setTypeface(Typeface.DEFAULT);
+        printer.setLetterSpacing(5);
+
+        for (int i = 0; i < args.length; ++ i) {
+            String text = args[i].getString("text");
+            int fontSize = args[i].getInt("size");
+            int alignment = args[i].getInt("align");
+            boolean isBold = args[i].getBoolean("isbold");
+            boolean isString = args[i].getBoolean("isstring");
+
+            printer.appendPrnStr(text, fontSize, align[alignment], isBold);
+        }
+
         printer.startPrint(true, new OnPrintListener() {
             @Override
             public void onPrintResult(final int retCode) {
