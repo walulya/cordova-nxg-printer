@@ -196,7 +196,7 @@ public class PrinterHelper extends CordovaPlugin {
             }
         });
     }
-    private void printReceipt(JSONArray args, CallbackContext callbackContext) {
+    private void printReceipt(JSONArray args, CallbackContext callbackContext) throws JSONException {
         printer.initPrinter();
         printer.setTypeface(Typeface.DEFAULT);
         printer.setLetterSpacing(5);
