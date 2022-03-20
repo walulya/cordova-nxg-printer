@@ -201,12 +201,13 @@ public class PrinterHelper extends CordovaPlugin {
         printer.setTypeface(Typeface.DEFAULT);
         printer.setLetterSpacing(5);
 
-        for (int i = 0; i < args.length; ++ i) {
-            String text = args[i].getString("text");
-            int fontSize = args[i].getInt("size");
-            int alignment = args[i].getInt("align");
-            boolean isBold = args[i].getBoolean("isbold");
-            boolean isString = args[i].getBoolean("isstring");
+        for (int i = 0; i < args.length(); ++ i) {
+            JSONObject arg = args.getJSONObject(i);
+            String text      = arg.getString("text");
+            int fontSize     = arg.getInt("size");
+            int alignment    = arg.getInt("align");
+            boolean isBold   = arg.getBoolean("isbold");
+            boolean isString = arg.getBoolean("isstring");
 
             printer.appendPrnStr(text, fontSize, align[alignment], isBold);
         }
