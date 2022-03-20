@@ -209,6 +209,8 @@ public class PrinterHelper extends CordovaPlugin {
             boolean isBold   = arg.getBoolean("isbold");
             boolean isString = arg.getBoolean("isstring");
 
+            Toast.makeText(cordova.getActivity().getWindow().getContext(), text, Toast.LENGTH_SHORT).show();
+
             printer.appendPrnStr(text, fontSize, align[alignment], isBold);
         }
 
