@@ -202,7 +202,7 @@ public class PrinterHelper extends CordovaPlugin {
         printer.setLetterSpacing(5);
 
         Resources activityRes = cordova.getActivity().getResources();
-        int logoResId = activityRes.getIdentifier("swapp_logo", "drawable", cordova.getActivity().getPackageName())
+        int logoResId = activityRes.getIdentifier("swapp_logo", "drawable", cordova.getActivity().getPackageName());
 
         Bitmap bitmap;
 
