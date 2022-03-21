@@ -19,7 +19,7 @@ public class BarCodeUtil {
     private static final int WHITE = 0xFFFFFFFF;
     private static final int BLACK = 0xFF000000;
 
-    public static Bitmap encodeAsBitmap(String contents, int img_width, int img_height) {
+    public static Bitmap encodeAsBitmap(String contents, int img_width, int img_height) throws WriterException {
       return encodeAsBitmap(contents, BarcodeFormat.CODE_128, img_width, img_height);
     }
 
