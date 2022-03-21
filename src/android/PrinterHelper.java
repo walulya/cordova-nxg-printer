@@ -198,23 +198,11 @@ public class PrinterHelper extends CordovaPlugin {
     }
 
     private void printBarcode(String code) {
-        try {
-            Bitmap barcode = BarCodeUtil.encodeAsBitmap(code, 360, 90);
-            printer.appendImage(barcode, AlignEnum.CENTER);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+
     }
 
     private void printQrcode(String code) {
-        try {
-            Bitmap qrcode = QRCodeUtil.encodeAsBitmap(code, 120, 120);
-            printer.appendImage(qrcode, AlignEnum.CENTER);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+        
     }
 
     private void printReceipt(JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -241,14 +229,35 @@ public class PrinterHelper extends CordovaPlugin {
             int fontSize     = arg.getInt("size");
             int alignment    = arg.getInt("align");
             boolean isBold   = arg.getBoolean("isbold");
-            boolean isString = arg.getBoolean("isstring");
+            int printType = arg.getInt("type");
 
-            printer.appendPrnStr(text, fontSize, align[alignment], isBold);
+            if (isString) {
+                
+            }
+            switch(printType) {
+                case 0:
+                    printer.appendPrnStr(text, fontSize, align[alignment], isBold);
+                break;
+                case 1:
+                    try {
+                        Bitmap barcode = BarCodeUtil.encodeAsBitmap(code, 360, 90);
+                        printer.appendImage(barcode, AlignEnum.CENTER);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                break;
+                case 2:
+                    try {
+                        Bitmap qrcode = QRCodeUtil.encodeAsBitmap(text, 120, 120);
+                        printer.appendImage(qrcode, AlignEnum.CENTER);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                break;
+            }
         }
-
-        printBarcode("1234567890");
-
-        printQrcode("1234567890");
 
 
 

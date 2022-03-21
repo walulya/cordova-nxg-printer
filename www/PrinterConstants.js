@@ -38,5 +38,10 @@ module.exports = {
     SMALL: 20,
     NORMAL: 24,
     BIG: 28
+  },
+  Type: {
+    TEXT: 0,
+    BARCODE: 1,
+    QRCODE: 2
   }
 };
