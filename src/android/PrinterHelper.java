@@ -196,6 +196,27 @@ public class PrinterHelper extends CordovaPlugin {
             }
         });
     }
+
+    private void printBarcode(String code) {
+        try {
+            Bitmap barcode = BarCodeUtil.encodeAsBitmap(code, 360, 90);
+            printer.appendImage(barcode, AlignEnum.CENTER);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void printQrcode(String code) {
+        try {
+            Bitmap qrcode = QRCodeUtil.encodeAsBitmap(code, 120, 120);
+            printer.appendImage(qrcode, AlignEnum.CENTER);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void printReceipt(JSONArray args, CallbackContext callbackContext) throws JSONException {
         printer.initPrinter();
         printer.setTypeface(Typeface.DEFAULT);
@@ -225,21 +246,10 @@ public class PrinterHelper extends CordovaPlugin {
             printer.appendPrnStr(text, fontSize, align[alignment], isBold);
         }
 
-        try {
-            Bitmap barcode = BarCodeUtil.encodeAsBitmap("1234567890", 360, 90);
-            printer.appendImage(barcode, AlignEnum.CENTER);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+        printBarcode("1234567890");
 
-        try {
-            Bitmap qrcode = QRCodeUtil.encodeAsBitmap("1234567890", 120, 120);
-            printer.appendImage(qrcode, AlignEnum.CENTER);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+        printQrcode("1234567890");
+
 
 
         //printer.appendBarcode("1234567890", 50, 0, 2, BarcodeFormatEnum.CODE_128, AlignEnum.CENTER);
