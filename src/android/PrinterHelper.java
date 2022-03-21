@@ -231,9 +231,6 @@ public class PrinterHelper extends CordovaPlugin {
             boolean isBold   = arg.getBoolean("isbold");
             int printType = arg.getInt("type");
 
-            if (isString) {
-                
-            }
             switch(printType) {
                 case 0:
                     printer.appendPrnStr(text, fontSize, align[alignment], isBold);
