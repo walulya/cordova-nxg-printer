@@ -226,7 +226,7 @@ public class PrinterHelper extends CordovaPlugin {
         }
 
         try {
-        Bitmap barcode = BarCodeUtil.encodeAsBitmap("1234567890", 120, 50);
+        Bitmap barcode = BarCodeUtil.encodeAsBitmap("1234567890", 320, 120);
         printer.appendImage(barcode, AlignEnum.CENTER);
         } catch (Exception e) {
             e.printStackTrace();
