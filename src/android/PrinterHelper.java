@@ -235,7 +235,7 @@ public class PrinterHelper extends CordovaPlugin {
                 case 0:
                     printer.appendPrnStr(text, fontSize, align[alignment], isBold);
                 break;
-                case 1:
+                /*case 1:
                     try {
                         Bitmap barcode = BarCodeUtil.encodeAsBitmap(text, 360, 90);
                         printer.appendImage(barcode, AlignEnum.CENTER);
@@ -252,7 +252,7 @@ public class PrinterHelper extends CordovaPlugin {
                         e.printStackTrace();
                         Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                break;
+                break;*/
             }
         }
 
