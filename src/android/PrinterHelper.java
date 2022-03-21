@@ -196,15 +196,6 @@ public class PrinterHelper extends CordovaPlugin {
             }
         });
     }
-
-    private void printBarcode(String code) {
-
-    }
-
-    private void printQrcode(String code) {
-        
-    }
-
     private void printReceipt(JSONArray args, CallbackContext callbackContext) throws JSONException {
         printer.initPrinter();
         printer.setTypeface(Typeface.DEFAULT);
@@ -229,33 +220,26 @@ public class PrinterHelper extends CordovaPlugin {
             int fontSize     = arg.getInt("size");
             int alignment    = arg.getInt("align");
             boolean isBold   = arg.getBoolean("isbold");
-            int printType = arg.getInt("type");
+            int ptype        = arg.getInt("type");
 
-            switch(printType) {
-                case 0:
-                    printer.appendPrnStr(text, fontSize, align[alignment], isBold);
-                break;
-                /*case 1:
-                    try {
-                        Bitmap barcode = BarCodeUtil.encodeAsBitmap(text, 360, 90);
-                        printer.appendImage(barcode, AlignEnum.CENTER);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                break;
-                case 2:
-                    try {
-                        Bitmap qrcode = QRCodeUtil.encodeAsBitmap(text, 120, 120);
-                        printer.appendImage(qrcode, AlignEnum.CENTER);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                break;*/
-            }
+            printer.appendPrnStr(text, fontSize, align[alignment], isBold);
         }
 
+        try {
+            Bitmap barcode = BarCodeUtil.encodeAsBitmap("1234567890", 320, 90);
+            printer.appendImage(barcode, AlignEnum.CENTER);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+        try {
+            Bitmap qrcode = QRCodeUtil.encodeAsBitmap("1234567890", 120, 120);
+            printer.appendImage(qrcode, AlignEnum.CENTER);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
 
         //printer.appendBarcode("1234567890", 50, 0, 2, BarcodeFormatEnum.CODE_128, AlignEnum.CENTER);
