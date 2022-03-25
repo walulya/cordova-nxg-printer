@@ -61,6 +61,9 @@ public class PrinterHelper extends CordovaPlugin {
     private final int FONT_SIZE_SMALL = 20;
     private final int FONT_SIZE_NORMAL = 24;
     private final int FONT_SIZE_BIG = 28;
+    private final int TEXT   = 0;
+    private final int BARCDE = 1;
+    private final int QRCOE  = 2;
     private FontEntity fontSmall = new FontEntity(DotMatrixFontEnum.CH_SONG_20X20, DotMatrixFontEnum.ASC_SONG_8X16);
     private FontEntity fontNormal = new FontEntity(DotMatrixFontEnum.CH_SONG_24X24, DotMatrixFontEnum.ASC_SONG_12X24);
     private FontEntity fontBold = new FontEntity(DotMatrixFontEnum.CH_SONG_24X24, DotMatrixFontEnum.ASC_SONG_BOLD_16X24);
@@ -241,14 +244,21 @@ public class PrinterHelper extends CordovaPlugin {
             int alignment    = arg.getInt("align");
             boolean isBold   = arg.getBoolean("isbold");
             int ptype        = arg.getInt("type");
-
-            printer.appendPrnStr(text, fontSize, align[alignment], isBold);
+            if (ptype == TEXT) {
+                printer.appendPrnStr(text, fontSize, align[alignment], isBold);
+            } else if (ptype == BARCODE) {
+                printBarCode(text);   // 1234567890
+            } else if (ptype == QRCODE) {
+                printQRCode(text);
+            } else {
+                Toast.makeText(cordova.getActivity().getWindow().getContext(), "Unknown content type", Toast.LENGTH_SHORT).show();
+            }
         }
 
-        printBarCode("1234567890");
-
-        printQRCode("1234567890");
         
+
+        
+
         printer.startPrint(true, new OnPrintListener() {
             @Override
             public void onPrintResult(final int retCode) {
