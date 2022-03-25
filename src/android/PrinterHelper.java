@@ -237,8 +237,8 @@ public class PrinterHelper extends CordovaPlugin {
             return;
         }
 
-        // printer.appendImage(bitmap, AlignEnum.CENTER);
-         printer.appendPrnStr("Left", "Right", fontNormal);
+        printer.appendImage(bitmap, AlignEnum.CENTER);
+
         for (int i = 0; i < args.length(); ++ i) {
             JSONObject arg = args.getJSONObject(i);
             String text      = arg.getString("text");
@@ -252,7 +252,7 @@ public class PrinterHelper extends CordovaPlugin {
                 String text2      = arg.getString("text2");
                 printer.appendPrnStr(text, text2, fontSize, isBold);
             } else if (ptype == BARCODE) {
-                printBarCode(text);   // 1234567890
+                printBarCode(text);
             } else if (ptype == QRCODE) {
                 printQRCode(text);
             } else {
