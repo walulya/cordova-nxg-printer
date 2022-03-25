@@ -62,8 +62,8 @@ public class PrinterHelper extends CordovaPlugin {
     private final int FONT_SIZE_NORMAL = 24;
     private final int FONT_SIZE_BIG = 28;
     private final int TEXT   = 0;
-    private final int BARCDE = 1;
-    private final int QRCOE  = 2;
+    private final int BARCODE = 1;
+    private final int QRCODE  = 2;
     private FontEntity fontSmall = new FontEntity(DotMatrixFontEnum.CH_SONG_20X20, DotMatrixFontEnum.ASC_SONG_8X16);
     private FontEntity fontNormal = new FontEntity(DotMatrixFontEnum.CH_SONG_24X24, DotMatrixFontEnum.ASC_SONG_12X24);
     private FontEntity fontBold = new FontEntity(DotMatrixFontEnum.CH_SONG_24X24, DotMatrixFontEnum.ASC_SONG_BOLD_16X24);
