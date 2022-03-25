@@ -236,8 +236,8 @@ public class PrinterHelper extends CordovaPlugin {
             return;
         }
 
-        printer.appendImage(bitmap, AlignEnum.CENTER);
-
+        // printer.appendImage(bitmap, AlignEnum.CENTER);
+         printer.appendPrnStr("Left", "Right", fontNormal);
         for (int i = 0; i < args.length(); ++ i) {
             JSONObject arg = args.getJSONObject(i);
             String text      = arg.getString("text");
