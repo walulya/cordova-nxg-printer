@@ -196,6 +196,26 @@ public class PrinterHelper extends CordovaPlugin {
             }
         });
     }
+    private void printBarCode(String code) {
+        try {
+            Bitmap barcode = BarCodeUtil.encodeAsBitmap(code, 320, 90);
+            printer.appendImage(barcode, AlignEnum.CENTER);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void printQRCode(String code) {
+        try {
+            Bitmap qrcode = QRCodeUtil.encodeAsBitmap(code, 120, 120);
+            printer.appendImage(qrcode, AlignEnum.CENTER);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }    
+    }
+
     private void printReceipt(JSONArray args, CallbackContext callbackContext) throws JSONException {
         printer.initPrinter();
         printer.setTypeface(Typeface.DEFAULT);
@@ -225,25 +245,10 @@ public class PrinterHelper extends CordovaPlugin {
             printer.appendPrnStr(text, fontSize, align[alignment], isBold);
         }
 
-        try {
-            Bitmap barcode = BarCodeUtil.encodeAsBitmap("1234567890", 320, 90);
-            printer.appendImage(barcode, AlignEnum.CENTER);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+        printBarCode("1234567890");
 
-        try {
-            Bitmap qrcode = QRCodeUtil.encodeAsBitmap("1234567890", 120, 120);
-            printer.appendImage(qrcode, AlignEnum.CENTER);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-
-
-        //printer.appendBarcode("1234567890", 50, 0, 2, BarcodeFormatEnum.CODE_128, AlignEnum.CENTER);
-
+        printQRCode("1234567890");
+        
         printer.startPrint(true, new OnPrintListener() {
             @Override
             public void onPrintResult(final int retCode) {
