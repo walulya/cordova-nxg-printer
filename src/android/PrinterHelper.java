@@ -62,8 +62,9 @@ public class PrinterHelper extends CordovaPlugin {
     private final int FONT_SIZE_NORMAL = 24;
     private final int FONT_SIZE_BIG = 28;
     private final int TEXT   = 0;
-    private final int BARCODE = 1;
-    private final int QRCODE  = 2;
+    private final int TWO_STRING   = 1;
+    private final int BARCODE = 2;
+    private final int QRCODE  = 3;
     private FontEntity fontSmall = new FontEntity(DotMatrixFontEnum.CH_SONG_20X20, DotMatrixFontEnum.ASC_SONG_8X16);
     private FontEntity fontNormal = new FontEntity(DotMatrixFontEnum.CH_SONG_24X24, DotMatrixFontEnum.ASC_SONG_12X24);
     private FontEntity fontBold = new FontEntity(DotMatrixFontEnum.CH_SONG_24X24, DotMatrixFontEnum.ASC_SONG_BOLD_16X24);
@@ -247,6 +248,9 @@ public class PrinterHelper extends CordovaPlugin {
             int ptype        = arg.getInt("type");
             if (ptype == TEXT) {
                 printer.appendPrnStr(text, fontSize, align[alignment], isBold);
+            } else if (ptype == TWO_STRING) {
+                String text2      = arg.getString("text2");
+                printer.appendPrnStr(text, text2, fontSize);
             } else if (ptype == BARCODE) {
                 printBarCode(text);   // 1234567890
             } else if (ptype == QRCODE) {

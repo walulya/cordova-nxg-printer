@@ -41,7 +41,8 @@ module.exports = {
   },
   Type: {
     TEXT: 0,
-    BARCODE: 1,
-    QRCODE: 2
+    TWO_STRING: 1,
+    BARCODE: 2,
+    QRCODE: 3
   }
 };
