@@ -250,7 +250,7 @@ public class PrinterHelper extends CordovaPlugin {
                 printer.appendPrnStr(text, fontSize, align[alignment], isBold);
             } else if (ptype == TWO_STRING) {
                 String text2      = arg.getString("text2");
-                printer.appendPrnStr(text, text2, fontSize);
+                printer.appendPrnStr(text, text2, fontSize, isBold);
             } else if (ptype == BARCODE) {
                 printBarCode(text);   // 1234567890
             } else if (ptype == QRCODE) {
