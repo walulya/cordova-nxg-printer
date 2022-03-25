@@ -193,6 +193,7 @@ public class PrinterHelper extends CordovaPlugin {
                  cordova.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        callbackContext.success("Printing Successful");
                         Toast.makeText(cordova.getActivity().getWindow().getContext(), "Printing Succeeded", Toast.LENGTH_SHORT).show();
                     }
                 });
