@@ -154,18 +154,25 @@ public class PrinterHelper extends CordovaPlugin {
         printer.setTypeface(Typeface.DEFAULT);
         printer.setLetterSpacing(5);
 
+        Resources activityRes = cordova.getActivity().getResources();
+        int logoResId = activityRes.getIdentifier("swapp_logo", "drawable", cordova.getActivity().getPackageName());
+
+        Bitmap bitmap;
+
+        bitmap = BitmapFactory.decodeResource(activityRes, logoResId);
+        if (bitmap == null) {
+            showToast("No image has been configured");
+            return;
+        }
+
+        printer.appendImage(bitmap, AlignEnum.CENTER);
+
         printer.appendPrnStr("Test String", FONT_SIZE_SMALL, align[2], false);
+        // printer.appendBarcode("20220301808908009", 50, 0, 2, BarcodeFormatEnum.CODE_128, AlignEnum.CENTER);
+        printer.appendPrnStr("Merchant", "Pos-Agent", FONT_SIZE_NORMAL, false);
+
         printer.appendPrnStr("---------------------------", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
-        printer.appendPrnStr("merchant name:app test", FONT_SIZE_NORMAL, AlignEnum.RIGHT, false);
-        printer.appendPrnStr("---------------------------", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
-        printer.appendBarcode("20220301808908009", 50, 0, 2, BarcodeFormatEnum.CODE_128, AlignEnum.CENTER);
-        printer.appendQRcode("this qr code", 200, AlignEnum.CENTER);
-        printer.appendPrnStr("Ivan Walulya", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
-        printer.appendPrnStr("\n", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
-        printer.appendPrnStr("\n", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
-        printer.appendPrnStr("\n", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
-        printer.appendPrnStr("---------------------------", FONT_SIZE_NORMAL, AlignEnum.LEFT, false);
-        printer.appendPrnStr("Swedbank", FONT_SIZE_SMALL, AlignEnum.LEFT, false);
+        printBarCode("20220301808908009");
         printer.appendPrnStr("I ACKNOWLEDGE SATISFACTORY RECEIPT OF RELATIVE GOODS/SERVICES", FONT_SIZE_SMALL, AlignEnum.LEFT, false);
         printer.startPrint(true, new OnPrintListener() {
             @Override
