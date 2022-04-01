@@ -212,8 +212,8 @@ public class PrinterHelper extends CordovaPlugin {
         try {
             Bitmap barcode = BarCodeUtil.encodeAsBitmap(code, 320, 90);
             printer.appendImage(barcode, AlignEnum.CENTER);
+            printer.appendPrnStr(code, FONT_SIZE_SMALL, AlignEnum.CENTER, false);
         } catch (Exception e) {
-            e.printStackTrace();
             Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
@@ -223,7 +223,6 @@ public class PrinterHelper extends CordovaPlugin {
             Bitmap qrcode = QRCodeUtil.encodeAsBitmap(code, 120, 120);
             printer.appendImage(qrcode, AlignEnum.CENTER);
         } catch (Exception e) {
-            e.printStackTrace();
             Toast.makeText(cordova.getActivity().getWindow().getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }    
     }
